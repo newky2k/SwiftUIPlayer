@@ -12,15 +12,21 @@ import AVKit
 public struct VideoPlayerView: View {
     
     @State private var isPlaying = false
-    @State private var showControls = true
+    @Binding public var showControls: Bool
     @State private var timer: Timer?
     
     @State private var isPLayerFullScreen = false
     @State private var orientation: UIDeviceOrientation = UIDevice.current.orientation
-    
+
     @State var player: AVPlayer
     let timecodes: [Timecode]?
-    
+
+    public init(player: AVPlayer, timecodes: [Timecode]?, showControls: Binding<Bool>) {
+        self.player = player
+        self.timecodes = timecodes
+        self._showControls = showControls
+    }
+
     public var body: some View {
         
         let controlButtons = PlayerControlButtons(
