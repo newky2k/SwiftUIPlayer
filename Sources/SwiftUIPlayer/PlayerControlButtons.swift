@@ -19,7 +19,7 @@ public struct PlayerControlButtons: View {
     @Binding var showPlayerControlButtons: Bool
     @Binding var isPlayerFullScreen: Bool
     @Binding var avPlayer: AVPlayer
-    let timecodes: [Timecode]
+    let timecodes: [Timecode]?
     
     private var currentTimeText: String {
        if let duration = avPlayer.currentItem?.duration.seconds {
