@@ -25,5 +25,11 @@ public class PlayerViewModel: ObservableObject {
             player = AVPlayer(url: videoURL)
         }
     }
-    
+
+    public init(player: AVPlayer, timecodes: [Timecode]?, showControls: Binding<Bool>) {
+        self.timecodes = timecodes
+        self._showControls = showControls
+        self.player = player
+    }
+
 }
