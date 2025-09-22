@@ -96,13 +96,14 @@ public struct VideoPlayerView: View {
     
     
     private func frameHeightFullScreen(for orientation: UIDeviceOrientation) -> CGFloat {
-        let screenHeight = UIScreen.main.bounds.height
-        if orientation.isPortrait {
-            return UIDevice.current.userInterfaceIdiom == .pad ? screenHeight * 0.4 : screenHeight * 0.33
-        }
-        else {
-            return UIScreen.main.bounds.height
-        }
+        UIScreen.main.bounds.height
+//        let screenHeight = UIScreen.main.bounds.height
+//        if orientation.isPortrait {
+//            return UIDevice.current.userInterfaceIdiom == .pad ? screenHeight * 0.4 : screenHeight * 0.33
+//        }
+//        else {
+//            return UIScreen.main.bounds.height
+//        }
     }
     
     private func frameHeight(for orientation: UIDeviceOrientation) -> CGFloat {
