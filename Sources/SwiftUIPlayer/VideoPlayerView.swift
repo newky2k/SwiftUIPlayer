@@ -67,6 +67,7 @@ public struct VideoPlayerView: View {
             .preferredColorScheme(.dark)
             .fullScreenCover(isPresented: $isPLayerFullScreen) {
                 ZStack {
+                    Color.primary.edgesIgnoringSafeArea(.all)
                     player
                     if showControls {
                         controlButtons
