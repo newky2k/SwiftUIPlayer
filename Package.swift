@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "SwiftUIPlayer",
+    name: "SwiftUIPlayerAlt",
     platforms: [
         .iOS(.v14)
     ], products: [

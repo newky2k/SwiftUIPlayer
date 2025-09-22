@@ -7,13 +7,17 @@ import SwiftUI
 public struct SwiftUIPlayer: View {
     
     @ObservedObject var viewModel: PlayerViewModel
-    
-    public init(url: String, timecodes: [Timecode]) {
-        self.viewModel = PlayerViewModel(url: url, timecodes: timecodes)
+
+
+    public init(url: String, timecodes: [Timecode]? = nil, showControls: Binding<Bool>) {
+        self.viewModel = PlayerViewModel(url: url, timecodes: timecodes, showControls: showControls)
     }
     
     public var body: some View {
-        VideoPlayerView(player: viewModel.player, timecodes: viewModel.timecodes)
-        TimecodeListView(player: viewModel.player, timecodes: viewModel.timecodes)
+        VideoPlayerView(player: viewModel.player, timecodes: viewModel.timecodes, showControls: viewModel.$showControls)
+
+        if let timecodes = viewModel.timecodes {
+            TimecodeListView(player: viewModel.player, timecodes: timecodes)
+        }
     }
 }

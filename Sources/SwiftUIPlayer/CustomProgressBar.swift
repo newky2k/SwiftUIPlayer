@@ -15,8 +15,8 @@ public struct CustomProgressBar: UIViewRepresentable {
     @Binding var avPlayer: AVPlayer
     @Binding var isPlaying: Bool
     
-    let timecodes: [Timecode]
-        
+    let timecodes: [Timecode]?
+
     private var smallThumbImage: UIImage {
         createThumbImage(size: CGSize(width: 16, height: 16), color: .white)
     }
@@ -113,9 +113,9 @@ public struct CustomProgressBar: UIViewRepresentable {
 class DashedSlider: UISlider {
     
     var avPlayer: AVPlayer
-    let timecodes: [Timecode]
+    let timecodes: [Timecode]?
 
-    init(avPlayer: AVPlayer, timecodes: [Timecode]) {
+    init(avPlayer: AVPlayer, timecodes: [Timecode]?) {
         self.avPlayer = avPlayer
         self.timecodes = timecodes
         super.init(frame: .zero)
@@ -146,12 +146,15 @@ class DashedSlider: UISlider {
         let totalDuration = CMTimeGetSeconds(
             avPlayer.currentItem?.asset.duration ?? CMTime(seconds: 0, preferredTimescale: 1)
         )
-        
-        for timecode in timecodes {
-            let x = CGFloat(timecode.time.seconds / totalDuration) * rect.size.width
-            let dashRect = CGRect(x: x, y: (rect.size.height - dashHeight) / 2, width: 4, height: dashHeight)
-            context?.setFillColor(timeCodeColor)
-            context?.fill(dashRect)
+
+        if let timecodes {
+            for timecode in timecodes {
+                let x = CGFloat(timecode.time.seconds / totalDuration) * rect.size.width
+                let dashRect = CGRect(x: x, y: (rect.size.height - dashHeight) / 2, width: 4, height: dashHeight)
+                context?.setFillColor(timeCodeColor)
+                context?.fill(dashRect)
+            }
         }
+
     }
 }

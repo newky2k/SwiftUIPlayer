@@ -1,6 +1,6 @@
-# SwiftUIPlayer
-SwiftUIPlayer is developed by [Aitolkun Anarbekova](https://www.linkedin.com/in/aitolkun/)
+# SwiftUIPlayerAlt
 
+An alternate version of SwiftUIPlay as developed by [Aitolkun Anarbekova](https://www.linkedin.com/in/aitolkun/)
 
 
 ## Installation
